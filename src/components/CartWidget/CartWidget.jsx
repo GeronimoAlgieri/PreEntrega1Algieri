@@ -4,6 +4,7 @@ const CartWidget = () => {
   return (
     <div>
       <HiShoppingCart size={25} />
+      <span>0</span>
     </div>
   );
 };

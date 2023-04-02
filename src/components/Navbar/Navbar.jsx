@@ -49,7 +49,7 @@ const Navbar = () => {
             </li>
           </ul>
         </Grid>
-        <Grid style={{ marginTop: "30px" }} item xs={1}>
+        <Grid style={{ marginTop: "32px" }} item xs={1}>
           <CartWidget />
         </Grid>
       </Grid>
