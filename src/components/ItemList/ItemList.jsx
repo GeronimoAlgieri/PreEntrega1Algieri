@@ -9,7 +9,7 @@ import {
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const ItemDetail = ({ items }) => {
+const ItemList = ({ items }) => {
   return (
     <div
       className="cards"
@@ -24,7 +24,7 @@ const ItemDetail = ({ items }) => {
     >
       {items.map((item) => {
         return (
-          <Card sx={{ maxWidth: 345 }}>
+          <Card key={item.id} sx={{ maxWidth: 345 }}>
             <CardActionArea>
               <CardMedia
                 component="img"
@@ -43,7 +43,7 @@ const ItemDetail = ({ items }) => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Link to={`itemDetail/${item.id}`}>
+              <Link to={`/itemDetail/${item.id}`}>
                 <Button variant="contained" size="small">
                   Ver Detalle
                 </Button>
@@ -56,4 +56,4 @@ const ItemDetail = ({ items }) => {
   );
 };
 
-export default ItemDetail;
+export default ItemList;

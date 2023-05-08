@@ -1,8 +1,7 @@
 export const producto = [
   {
     id: 2,
-    title:
-      "Golden State Warriors Stephen Curry Nike Royal 2022/23 - Icon Edition",
+    title: "Golden State Warriors Stephen Curry Nike Royal 2022/23",
     price: 119,
     stock: 4,
     description:
@@ -12,7 +11,7 @@ export const producto = [
   },
   {
     id: 3,
-    title: "Golden State Warriors Nike Royal 2022/23 Performance Shorts",
+    title: "Golden State Warriors Nike Royal 2022/23",
     price: 89,
     stock: 5,
     description:
@@ -24,7 +23,7 @@ export const producto = [
     id: 4,
     title: "Los Angeles Lakers LeBron James Nike Black City Edition",
     price: 109,
-    stock: 3,
+    stock: 6,
     description:
       "Cuenta con gráficos detallados de LeBron James que muestran audazmente su orgullo por Los Angeles Lakers.",
     category: "T-Shirts",
@@ -32,9 +31,9 @@ export const producto = [
   },
   {
     id: 5,
-    title: "Los Angeles Lakers Jordan Brand Black 2022/2023 Performance Shorts",
+    title: "Los Angeles Lakers Jordan Brand Black 2022/2023",
     price: 79,
-    stock: 2,
+    stock: 9,
     description:
       "Lleve su orgullo de Los Angeles Lakers al siguiente nivel cuando luce estos shorts Jordan Brand Swingman.",
     category: "Shorts",
@@ -42,8 +41,7 @@ export const producto = [
   },
   {
     id: 6,
-    title:
-      "Chicago Bulls Michael Jordan Mitchell & Ness White 1997-98 Hardwood Classics Authentic Jersey",
+    title: "Chicago Bulls Michael Jordan Mitchell & Ness White 1997-98",
     price: 170,
     stock: 3,
     description:
@@ -55,7 +53,7 @@ export const producto = [
     id: 7,
     title: "Chicago Bulls Nike White 2022/23 Performance Shorts",
     price: 89,
-    stock: 3,
+    stock: 11,
     description:
       "Los gráficos nítidos y el diseño especial de City Edition lo hacen único en su colección de los Chicago Bulls.",
     category: "Shorts",
@@ -65,7 +63,7 @@ export const producto = [
     id: 8,
     title: "Milwaukee Bucks Giannis Antetokounmpo Nike White 2022/23",
     price: 119,
-    stock: 1,
+    stock: 4,
     description:
       "Capture la identidad distintiva de su equipo en un diseño nuevo e innovador cuando agarre esta camiseta Giannis Antetokounmpo Milwaukee Bucks Icon Swingman.",
     category: "T-Shirts",
@@ -73,7 +71,7 @@ export const producto = [
   },
   {
     id: 9,
-    title: "Milwaukee Bucks Nike White/Hunter Green 2020/21 Performance Shorts",
+    title: "Milwaukee Bucks Nike White/Hunter Green 2020/21",
     price: 63,
     stock: 7,
     description:

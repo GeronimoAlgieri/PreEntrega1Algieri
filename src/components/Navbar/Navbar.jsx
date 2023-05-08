@@ -36,13 +36,13 @@ export const Navbar = () => {
               </Link>
               <Link
                 style={{ color: "black", textDecoration: "none" }}
-                to="/category/T-Shirts"
+                to="/category/t-shirts"
               >
                 T-Shirts
               </Link>
               <Link
                 style={{ color: "black", textDecoration: "none" }}
-                to="/category/Shorts"
+                to="/category/shorts"
               >
                 Shorts
               </Link>
