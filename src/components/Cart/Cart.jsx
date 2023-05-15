@@ -30,7 +30,7 @@ const Cart = ({ cart, limpiarCarrito, eliminarProducto, total, navigate }) => {
             className="btn-clean"
             onClick={limpiarCarrito}
             variant="contained"
-            eliminarProducto={eliminarProducto}
+            // eliminarProducto={eliminarProducto}
           >
             Limpiar carrito{" "}
           </Button>

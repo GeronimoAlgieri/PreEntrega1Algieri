@@ -5,10 +5,11 @@ import { CartContext } from "../../context/CartContext";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { database } from "../../firebase";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
 
 export const FormCheckoutContained = () => {
-  const { cart, getTotalPrice, updateDoc, doc } = useContext(CartContext);
+  const { cart, getTotalPrice, serverTimestamp, clearCart } =
+    useContext(CartContext);
 
   const [orderId, setOrderId] = useState(null);
 
@@ -19,20 +20,19 @@ export const FormCheckoutContained = () => {
       buyer: data,
       items: cart,
       total: total,
+      date: serverTimestamp(),
     };
+    console.log(dataOrder);
 
     const ordersCollection = collection(database, "orders");
     addDoc(ordersCollection, dataOrder).then((res) => setOrderId(res.id));
 
-    cart.map((producto) =>
-      updateDoc(doc(database, "productos", producto.id), {
-        stock: producto.stock - producto.quantity,
+    cart.map((prod) =>
+      updateDoc(doc(database, "producto", prod.id), {
+        stock: prod.stock - prod.quantity,
       })
     );
-    // cart.map((producto) => {
-    //   updateDoc(doc(database, "producto", producto.id)),
-    //     { stock: producto.stock - producto.quantity };
-    // });
+    clearCart();
   };
   console.log(orderId);
 
