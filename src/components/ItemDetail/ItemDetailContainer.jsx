@@ -14,7 +14,7 @@ const ItemDetailContainer = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    const itemCollection = collection(database, "productos");
+    const itemCollection = collection(database, "producto");
     const refDoc = doc(itemCollection, id);
     getDoc(refDoc)
       .then((res) =>

@@ -1,6 +1,5 @@
 import { HiShoppingCart } from "react-icons/hi";
 import "./CartWidget.css";
-import React from "react";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
@@ -10,9 +9,11 @@ const CartWidget = () => {
 
   return (
     <Link to="/cart">
-      <div>
-        <HiShoppingCart size={25} />
-        <span>{cart.length}</span>
+      <div className="cartwidget">
+        <HiShoppingCart size={35} />
+        <div className="numerito">
+          <span>{cart.length}</span>
+        </div>
       </div>
     </Link>
   );
