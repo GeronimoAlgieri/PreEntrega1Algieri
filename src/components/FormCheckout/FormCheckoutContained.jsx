@@ -1,20 +1,30 @@
 import React, { useContext, useState } from "react";
 import FormCheckout from "./FormCheckout";
 import { CartContext } from "../../context/CartContext";
+import "./FormCheckoutContained.css";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { database } from "../../firebase";
-import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  updateDoc,
+  doc,
+  serverTimestamp,
+} from "firebase/firestore";
 
 export const FormCheckoutContained = () => {
-  const { cart, getTotalPrice, serverTimestamp, clearCart } =
-    useContext(CartContext);
+  const { cart, precioTotal, clearCart } = useContext(CartContext);
 
   const [orderId, setOrderId] = useState(null);
 
-  const checkoutFn = (data) => {
-    let total = getTotalPrice();
+  const [user, setUser] = useState(null);
+
+  const checkoutFn = (e, data) => {
+    e.preventDefault();
+
+    let total = precioTotal();
 
     let dataOrder = {
       buyer: data,
@@ -22,10 +32,18 @@ export const FormCheckoutContained = () => {
       total: total,
       date: serverTimestamp(),
     };
-    console.log(dataOrder);
 
-    const ordersCollection = collection(database, "orders");
-    addDoc(ordersCollection, dataOrder).then((res) => setOrderId(res.id));
+    setUser(dataOrder);
+
+    registrarVenta();
+  };
+
+  const registrarVenta = async () => {
+    const compra = await addDoc(collection(database, "orders"), {
+      venta: { ...cart },
+      cliente: user,
+    });
+    setOrderId(compra._key.path.segments[1]);
 
     cart.map((prod) =>
       updateDoc(doc(database, "producto", prod.id), {
@@ -34,9 +52,8 @@ export const FormCheckoutContained = () => {
     );
     clearCart();
   };
-  console.log(orderId);
 
-  const { handleSubmit, handleChange, errors } = useFormik({
+  const { handleChange, errors, values } = useFormik({
     initialValues: {
       email: "",
       nombre: "",
@@ -66,12 +83,17 @@ export const FormCheckoutContained = () => {
   return (
     <div>
       {orderId ? (
-        <h1>{orderId}</h1>
+        <h2 className="mensaje">
+          Muchas gracias por su compra, por favor guarde su numero de compra que
+          es {orderId}. Nos contactaremos con usted por email para coordinar el
+          envio
+        </h2>
       ) : (
         <FormCheckout
           errors={errors}
           handleChange={handleChange}
-          handleSubmit={handleSubmit}
+          handleSubmit={checkoutFn}
+          values={values}
         />
       )}
     </div>

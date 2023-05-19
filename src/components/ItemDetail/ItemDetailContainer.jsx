@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import ItemDetail from "./ItemDetail";
+import Swal from "sweetalert2";
 
 import { useParams } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
@@ -9,7 +10,7 @@ import { getDoc, collection, doc } from "firebase/firestore";
 const ItemDetailContainer = () => {
   const [products, setProduct] = useState({});
 
-  const { agregarAlCarrito, getQuatityById } = useContext(CartContext);
+  const { agregarAlCarrito, getQuantityById } = useContext(CartContext);
 
   const { id } = useParams();
 
@@ -31,10 +32,18 @@ const ItemDetailContainer = () => {
       ...products,
       quantity: cantidad,
     };
+
     agregarAlCarrito(data);
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: `Se agrego el producto al carrito`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
-  let cantidadTotal = getQuatityById(products.id);
+  let cantidadTotal = getQuantityById(products.id);
 
   return (
     <div>

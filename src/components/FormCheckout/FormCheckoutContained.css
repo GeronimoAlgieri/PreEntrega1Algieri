@@ -1,0 +1,8 @@
+.mensaje {
+  display: flex;
+  width: 1000px;
+  background-color: rgba(182, 223, 2, 0.979);
+  padding: 30px;
+  margin-left: 400px;
+  margin-top: 150px;
+}

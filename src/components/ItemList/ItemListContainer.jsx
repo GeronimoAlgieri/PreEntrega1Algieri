@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import ItemList from "./ItemList";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 import { useParams } from "react-router-dom";
 import { database } from "../../firebase";
@@ -39,7 +41,15 @@ const ItemListContainer = () => {
 
   return (
     <div>
-      <ItemList items={items} />
+      {items.length === 0 ? (
+        <Box
+          sx={{ display: "flex", justifyContent: "center", marginTop: "400px" }}
+        >
+          <CircularProgress size={40} />
+        </Box>
+      ) : (
+        <ItemList items={items} />
+      )}
     </div>
   );
 };

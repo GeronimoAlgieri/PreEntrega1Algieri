@@ -1,8 +1,14 @@
-import { Button } from "@mui/material";
+import { Button, Link } from "@mui/material";
 import React from "react";
 import "./Cart.css";
 
-const Cart = ({ cart, limpiarCarrito, eliminarProducto, total, navigate }) => {
+const Cart = ({
+  cart,
+  limpiarCarritoAlert,
+  eliminarProducto,
+  total,
+  navigate,
+}) => {
   return (
     <div className="container">
       <div className="container-rigth">
@@ -25,19 +31,25 @@ const Cart = ({ cart, limpiarCarrito, eliminarProducto, total, navigate }) => {
       </div>
       <div className="finalizacion">
         <h1>El precio total es U$S{total}</h1>
-        <div className="btns">
-          <Button
-            className="btn-clean"
-            onClick={limpiarCarrito}
-            variant="contained"
-            // eliminarProducto={eliminarProducto}
-          >
-            Limpiar carrito{" "}
-          </Button>
-          <Button variant="contained" onClick={() => navigate("/checkout")}>
-            Terminar Compra
-          </Button>
-        </div>
+        {cart.length > 0 ? (
+          <div className="btns">
+            <Button
+              className="btn-clean"
+              onClick={limpiarCarritoAlert}
+              variant="contained"
+              // eliminarProducto={eliminarProducto}
+            >
+              Limpiar carrito{" "}
+            </Button>
+            <Button variant="contained" onClick={() => navigate("/checkout")}>
+              Terminar Compra
+            </Button>
+          </div>
+        ) : (
+          <Link to="/">
+            <Button variant="contained">Agrega productos</Button>
+          </Link>
+        )}
       </div>
     </div>
   );

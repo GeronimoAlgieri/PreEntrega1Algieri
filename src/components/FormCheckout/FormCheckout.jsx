@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Grid, TextField } from "@mui/material";
 
-const FormCheckout = ({ handleChange, handleSubmit, errors }) => {
+const FormCheckout = ({ handleChange, handleSubmit, errors, values }) => {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Checkout</h1>
